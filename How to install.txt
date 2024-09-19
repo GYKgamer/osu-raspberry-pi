@@ -1,0 +1,51 @@
+(Windows)
+git clone https://github.com/ppy/osu
+cd osu
+dotnet workload install android maui-android
+dotnet publish -c Debug --runtime linux-arm64 (for pi-apps you'll use release, I used debug for debugging)
+(Saved location)\osu\osu.Desktop\bin\Release\net6.0
+Copy over linux-arm64 folder to the pi
+
+
+(Raspberry Pi)
+sudo apt install 7zip
+sudo apt install libsdl2-dev
+https://www.un4seen.com/download.php?bass24-linux
+go into bass24-linux.zip\libs\aarch64 and copy the libbass.so to /usr/lib
+https://www.un4seen.com/download.php?z/0/bass_fx24-linux
+go into bass_fx24-linux.zip\libs\aarch64 and copy the libbass_fx.so to /usr/lib
+https://www.un4seen.com/download.php?bassmix24-linux
+go into bassmix24-linux.zip\libs\aarch64 and copy the libbassmix.so to /usr/lib
+/home/pi
+git clone --recursive https://github.com/veldrid/veldrid-spirv/
+cd ext
+./sync-shaderc.sh
+mv src shaderc
+cd ..
+./build-native.sh -release linux-x64
+cd build/Release/linux-x64
+mv libveldrid-spirv.so liblibveldrid-spirv
+sudo cp liblibveldrid-spirv /lib/aarch64-linux-gnu
+/home/pi
+mkdir libs
+cd libs
+wget https://chromium.googlesource.com/android_tools/+archive/20ee6d20/ndk/platforms/android-21/arch-arm64/usr/lib.tar.gz
+7z x lib.tar.gz
+7z x lib.tar
+sudo cp libandroid.so /lib/aarch64-linux-gnu
+sudo cp libdl.so /lib/aarch64-linux-gnu/
+sudo cp liblog.so /lib/aarch64-linux-gnu/
+sudo apt-get install libstb-dev
+add kernel=kernel8.img to /boot/config.txt
+sudo reboot
+cd (wherever you have osu)
+chmod +x osu\!
+LIBGL_ALWAYS_SOFTWARE=true ./osu\!
+stop the game from loading after the fonts load (ctrl + c)
+nano ~/.local/share/osu-development/framework.ini
+change "WindowedSize" to 640x480
+chnage "FrameSync" to Unlimited
+change "WindowMode" to Windowed
+save the file
+LIBGL_ALWAYS_SOFTWARE=true ./osu\!
+osu should load in at 640x480 windowed
