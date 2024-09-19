@@ -3,7 +3,7 @@
 </p>
 
 I'm gonna be honest, I completely forgot what tools you need, all instructions listed will get the game working, but yeah. I sadly for got tools used, looking at the commands though I think it's easy what you need to run.
-
+[How to install.txt](https://github.com/GYKgamer/osu-raspberry-pi/blob/369a8b955724d14bba74c6536bf2b47ee12fa5f2/How%20to%20install.txt)
 
 # osu!
 
