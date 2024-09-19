@@ -2,6 +2,9 @@
   <img width="500" alt="osu! logo" src="assets/lazer.png">
 </p>
 
+I'm gonna be honest, I completely forgot what tools you need, all instructions listed will get the game working, but yeah. I sadly for got tools used, looking at the commands though I think it's easy what you need to run.
+
+
 # osu!
 
 [![Build status](https://github.com/ppy/osu/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/ppy/osu/actions/workflows/ci.yml)
